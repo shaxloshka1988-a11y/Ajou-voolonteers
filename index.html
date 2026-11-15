@@ -75,4 +75,131 @@
         .form-group input, .form-group textarea { width: 100%; padding: 0.9rem; border: 1px solid #CBD5E0; border-radius: 10px; font-size: 1rem; transition: border 0.2s; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-blue); outline: none; }
         .form-submit { background-color: var(--primary-blue); color: var(--white); border: none; padding: 1rem 2rem; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; width: 100%; transition: background-color 0.3s, transform 0.2s; }
-        .form-submit:hover { background-color:
+        .form-submit:hover { background-color: var(--accent-blue); transform: translateY(-2px); }
+        
+        footer { text-align: center; padding: 2.5rem; color: var(--gray); font-size: 0.9rem; background-color: var(--white); border-top: 1px solid #E2E8F0; margin-top: 3rem; position: relative; z-index: 1; }
+        
+        @media (max-width: 768px) {
+            .nav-links { gap: 14px; font-size: 0.9rem; }
+            .hero h1 { font-size: 2.3rem; }
+            .logo-area span { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Декоративные эскизы -->
+    <svg class="sketch sketch-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 100 Q100 20 160 100 Q100 180 40 100" fill="none" stroke="#1B365D" stroke-width="3"/>
+        <circle cx="100" cy="100" r="18" fill="none" stroke="#2B6CB0" stroke-width="2"/>
+    </svg>
+    <svg class="sketch sketch-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 140 L100 40 L170 140" fill="none" stroke="#1B365D" stroke-width="3"/>
+        <circle cx="100" cy="90" r="12" fill="#2B6CB0" opacity="0.6"/>
+    </svg>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="image/logo.jpg" alt="Logo">
+                <span>Ajou Volunteers</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#leader">Лидер</a></li>
+                <li><a href="#events">Мероприятия</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#apply">Анкета</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero fade-in">
+        <h1>School of Volunteers Club</h1>
+        <p>Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!</p>
+        <a href="#apply" class="btn">Стать волонтером</a>
+    </section>
+
+    <div class="container fade-in" id="about">
+        <h2 class="section-title">О нашем клубе</h2>
+        <div class="card">
+            <p class="about-text">Мы — активное сообщество студентов университета Аджу, объединенных общей целью помогать другим, организовывать масштабные университетские и социальные мероприятия, развивать лидерские качества и делать добрые дела от чистого сердца.</p>
+        </div>
+    </div>
+
+    <div class="container fade-in" id="leader">
+        <h2 class="section-title">Руководство клуба</h2>
+        <div class="card">
+            <div class="leaders">
+                <div class="leader-block">
+                    <img src="image/leader.jpg" alt="Лидер" class="leader-img">
+                    <h3 style="color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 0.5rem;">Лидер</h3>
+                    <p class="about-text">Координатор и руководитель волонтерского клуба.</p>
+                </div>
+                <div class="leader-block">
+                    <img src="image/vice-leader.jpg" alt="Вице-лидер" class="leader-img">
+                    <h3 style="color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 0.5rem;">Вице-лидер</h3>
+                    <p class="about-text">Помощник лидера, отвечает за организацию мероприятий.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container fade-in" id="events">
+        <h2 class="section-title">Наши мероприятия и жизнь клуба</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="image/event1.jpg.PNG" alt="Мероприятие"></div>
+            <div class="gallery-item"><img src="image/event4.jpg" alt="Мероприятие"></div>
+        </div>
+    </div>
+
+    <div class="container fade-in" id="contacts">
+        <h2 class="section-title">Контакты</h2>
+        <div class="card">
+            <p class="about-text" style="margin-bottom: 1.5rem;">Свяжитесь с нами, если хотите присоединиться или задать вопрос</p>
+            <div class="contacts">
+                <div class="contact-item">
+                    <strong>Telegram</strong><br>
+                    <a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Перейти в чат</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Instagram</strong><br>
+                    <a href="https://www.instagram.com/sov.ajou?exln=Yzc0b3FiMWFwMjh4" target="_blank">@sov.ajou</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container fade-in" id="apply">
+        <h2 class="section-title">Стать частью команды</h2>
+        <div class="card">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="58b01bf8-596f-4493-8058-14cf697cd40a">
+                <input type="hidden" name="subject" value="Новая заявка в волонтеры Ajou">
+                <div class="form-group">
+                    <label for="name">ФИО полностью</label>
+                    <input type="text" id="name" name="name" required placeholder="Введите ваше ФИО">
+                </div>
+                <div class="form-group">
+                    <label for="group">Курс и направление (группа)</label>
+                    <input type="text" id="group" name="group" required placeholder="Например: B26C">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Номер телефона (Telegram)</label>
+                    <input type="text" id="phone" name="phone" required placeholder="+998...">
+                </div>
+                <div class="form-group">
+                    <label for="message">Почему вы хотите стать волонтером?</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Расскажите немного о себе..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Ajou-Volunteers. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
