@@ -1,63 +1,71 @@
-header { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
-    .back { color: var(--accent); text-decoration: none; font-weight: 500; }
-    
-    .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
-    h1 { font-size: 2.2rem; font-weight: 500; margin-bottom: 8px; }
-    .subtitle { color: var(--gray); margin-bottom: 40px; }
-    
-    .moment { margin-bottom: 48px; }
-    .moment img { width: 100%; border-radius: 8px; margin-bottom: 12px; border: 1px solid var(--border); }
-    .moment h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 6px; }
-    .moment p { color: var(--gray); font-size: 0.95rem; }
-    .date { font-size: 0.85rem; color: var(--gray); margin-bottom: 8px; }
-    
-    .theme-btn { background: none; border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; cursor: pointer; color: var(--text); }
-</style>
-
-<header>
-    <a href="index.html" class="logo">← Ajou Volunteers</a>
-    <button class="theme-btn" id="themeBtn">🌙</button>
-</header>
-
-<div class="container">
-    <h1>Моменты клуба</h1>
-    <p class="subtitle">Фотографии с наших мероприятий и жизни клуба</p>
-
-    <div class="moment">
-        <div class="date">Октябрь 2026</div>
-        <img src="image/event1.jpg.PNG" alt="Мероприятие">
-        <h3>Central Asian International Education Forum</h3>
-        <p>Участие в международном образовательном форуме. Наши волонтёры помогали с организацией и встречали гостей.</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моменты | Ajou Volunteers</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #202124;
+            --gray: #5f6368;
+            --border: #dadce0;
+            --accent: #1a73e8;
+        }
+        [data-theme="dark"] {
+            --bg: #202124;
+            --text: #e8eaed;
+            --gray: #9aa0a6;
+            --border: #3c4043;
+            --accent: #8ab4f8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+        header { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
+        h1 { font-size: 2.2rem; font-weight: 500; margin-bottom: 8px; }
+        .subtitle { color: var(--gray); margin-bottom: 40px; }
+        .moment { margin-bottom: 48px; }
+        .moment img { width: 100%; border-radius: 8px; margin-bottom: 12px; border: 1px solid var(--border); }
+        .moment h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 6px; }
+        .moment p { color: var(--gray); }
+        .date { font-size: 0.85rem; color: var(--gray); margin-bottom: 8px; }
+        .theme-btn { background: none; border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; cursor: pointer; color: var(--text); }
+    </style>
+</head>
+<body data-theme="light">
+    <header>
+        <a href="index.html" class="logo">← Ajou Volunteers</a>
+        <button class="theme-btn" id="themeBtn">🌙</button>
+    </header>
+    <div class="container">
+        <h1>Моменты клуба</h1>
+        <p class="subtitle">Фотографии с наших мероприятий</p>
+        <div class="moment">
+            <div class="date">Октябрь 2026</div>
+            <img src="image/event1.jpg.PNG" alt="Мероприятие">
+            <h3>Central Asian International Education Forum</h3>
+            <p>Участие в международном образовательном форуме.</p>
+        </div>
+        <div class="moment">
+            <div class="date">2026</div>
+            <img src="image/event4.jpg" alt="Мероприятие">
+            <h3>Выставка Ajou University</h3>
+            <p>Представляли университет на образовательной выставке.</p>
+        </div>
     </div>
-
-    <div class="moment">
-        <div class="date">2026</div>
-        <img src="image/event4.jpg" alt="Мероприятие">
-        <h3>Выставка Ajou University</h3>
-        <p>Представляли университет на образовательной выставке. Рассказывали абитуриентам о возможностях обучения.</p>
-    </div>
-
-    <!-- Добавляй новые моменты сюда -->
-    <!--
-    <div class="moment">
-        <div class="date">Дата</div>
-        <img src="image/твоё_фото.jpg" alt="">
-        <h3>Название момента</h3>
-        <p>Описание...</p>
-    </div>
-    -->
-</div>
-
-<script>
-    const btn = document.getElementById('themeBtn');
-    btn.onclick = () => {
-        const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-        document.body.dataset.theme = next;
-        btn.textContent = next === 'dark' ? '☀️' : '🌙';
-        localStorage.setItem('theme', next);
-    };
-    const saved = localStorage.getItem('theme') || 'light';
-    document.body.dataset.theme = saved;
-    btn.textContent = saved === 'dark' ? '☀️' : '🌙';
-</script>
+    <script>
+        const btn = document.getElementById('themeBtn');
+        btn.onclick = () => {
+            const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+            document.body.dataset.theme = next;
+            btn.textContent = next === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', next);
+        };
+        const saved = localStorage.getItem('theme') || 'light';
+        document.body.dataset.theme = saved;
+        btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+    </script>
+</body>
+</html>
