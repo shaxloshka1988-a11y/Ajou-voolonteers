@@ -27,71 +27,79 @@
             --primary-blue: #60A5FA;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
         
         header { background-color: var(--header-bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; color: var(--primary-blue); }
-        .logo-area img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
-        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .logo-area img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+        
+        .nav-links { display: flex; gap: 18px; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
-        .nav-links a:hover { color: var(--accent-blue); }
         
         .controls { display: flex; align-items: center; gap: 8px; }
         .lang-btn, .theme-btn { background: var(--light-blue); border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--primary-blue); }
         .lang-btn.active { background: var(--accent-blue); color: white; }
         
-        .hero { background: linear-gradient(135deg, #1B365D, #2563EB); color: white; text-align: center; padding: 6rem 20px; }
-        .hero h1 { font-size: 2.7rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.15rem; max-width: 600px; margin: 0 auto 1.8rem; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-color); }
+        
+        .hero { background: linear-gradient(135deg, #1B365D, #2563EB); color: white; text-align: center; padding: 5.5rem 20px; }
+        .hero h1 { font-size: 2.6rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
         .btn { display: inline-block; background: white; color: #1B365D; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 700; }
         
-        .container { max-width: 1000px; margin: 3.5rem auto; padding: 0 20px; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 1.8rem; color: var(--primary-blue); }
-        .card { background: var(--card-bg); border-radius: 20px; padding: 2.2rem; border: 1px solid var(--border); margin-bottom: 1.5rem; text-align: center; }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 1.9rem; margin-bottom: 1.5rem; color: var(--primary-blue); }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); margin-bottom: 1.5rem; text-align: center; }
         
-        .leaders { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .leader-block { flex: 1; min-width: 240px; max-width: 300px; }
-        .leader-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.2rem; border: 3px solid var(--light-blue); display: block; }
-        .about-text { font-size: 1.05rem; color: var(--gray); }
+        .leaders { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+        .leader-block { flex: 1; min-width: 220px; max-width: 280px; }
+        .leader-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--light-blue); display: block; }
+        .about-text { font-size: 1rem; color: var(--gray); }
         
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 1.5rem; }
-        .step { background: var(--light-blue); padding: 1.5rem; border-radius: 16px; text-align: center; }
-        .step-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 1.2rem; }
+        .step { background: var(--light-blue); padding: 1.3rem; border-radius: 16px; text-align: center; }
+        .step-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
         
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 1.5rem; }
-        .gallery-item { border-radius: 16px; overflow: hidden; height: 200px; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 1.2rem; }
+        .gallery-item { border-radius: 14px; overflow: hidden; height: 180px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         
-        .timeline { position: relative; max-width: 700px; margin: 2rem auto; }
-        .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 3px; background: var(--accent-blue); }
-        .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 60px; }
-        .timeline-item::before { content: ''; position: absolute; left: 12px; top: 5px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-blue); border: 3px solid var(--card-bg); }
-        
-        .contacts { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 1.2rem; }
-        .contact-item { background: var(--light-blue); padding: 1.2rem 1.6rem; border-radius: 16px; min-width: 220px; }
+        .contacts { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 1rem; }
+        .contact-item { background: var(--light-blue); padding: 1.1rem 1.4rem; border-radius: 14px; min-width: 200px; }
         .contact-item a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
         
-        .form-group { margin-bottom: 1.3rem; text-align: left; }
+        .form-group { margin-bottom: 1.2rem; text-align: left; }
         .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: var(--primary-blue); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; background: var(--card-bg); color: var(--text-color); }
-        .form-submit { background: var(--accent-blue); color: white; border: none; padding: 14px; border-radius: 30px; font-size: 1.05rem; font-weight: 700; cursor: pointer; width: 100%; }
+        .form-submit { background: var(--accent-blue); color: white; border: none; padding: 13px; border-radius: 30px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; }
         
-        footer { text-align: center; padding: 2rem; color: var(--gray); font-size: 0.85rem; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 1.5rem; color: var(--gray); font-size: 0.85rem; border-top: 1px solid var(--border); }
         
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.5s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
-        #toTop { position: fixed; bottom: 25px; right: 25px; background: var(--accent-blue); color: white; width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.5rem; cursor: pointer; display: none; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent-blue); color: white; width: 46px; height: 46px; border-radius: 50%; border: none; font-size: 1.4rem; cursor: pointer; display: none; z-index: 99; }
         
-        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; }
-        .lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
-        .lightbox.active { display: flex; }
-        
+        /* Mobile menu */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.2rem; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                right: 0; 
+                background: var(--header-bg); 
+                flex-direction: column; 
+                padding: 20px; 
+                gap: 16px; 
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .logo-area span { font-size: 1rem; }
+            .hero h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
@@ -103,12 +111,12 @@
                 <img src="image/logo.jpg" alt="Logo">
                 <span data-i18n="logo">Ajou Volunteers</span>
             </div>
-            <ul class="nav-links">  
-                <li><a href="moments.html">Моменты</a></li>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about" data-i18n="nav_about">О нас</a></li>
                 <li><a href="#how" data-i18n="nav_how">Как стать</a></li>
                 <li><a href="#leader" data-i18n="nav_leader">Лидер</a></li>
                 <li><a href="#events" data-i18n="nav_events">Мероприятия</a></li>
+                <li><a href="moments.html">Моменты</a></li>
                 <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
                 <li><a href="#apply" data-i18n="nav_apply">Анкета</a></li>
             </ul>
@@ -117,6 +125,7 @@
                 <button class="lang-btn" data-lang="uz">UZ</button>
                 <button class="lang-btn" data-lang="en">EN</button>
                 <button class="theme-btn" id="themeToggle">🌙</button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
             </div>
         </div>
     </header>
@@ -130,28 +139,16 @@
     <div class="container reveal" id="about">
         <h2 class="section-title" data-i18n="about_title">О нашем клубе</h2>
         <div class="card">
-            <p class="about-text" data-i18n="about_text">Мы — активное сообщество студентов университета Аджу, объединенных общей целью помогать другим, организовывать масштабные университетские и социальные мероприятия, развивать лидерские качества и делать добрые дела от чистого сердца.</p>
+            <p class="about-text" data-i18n="about_text">Мы — активное сообщество студентов университета Аджу, объединенных общей целью помогать другим и делать добрые дела.</p>
         </div>
     </div>
 
     <div class="container reveal" id="how">
-        <h2 class="section-title" data-i18n="how_title">Как стать волонтёром</h2>
+        <h2 class="section-title">Как стать волонтёром</h2>
         <div class="steps">
-            <div class="step">
-                <div class="step-icon">📝</div>
-                <h3 data-i18n="step1_title">Заполни анкету</h3>
-                <p data-i18n="step1_text">Оставь свои данные в форме ниже</p>
-            </div>
-            <div class="step">
-                <div class="step-icon">💬</div>
-                <h3 data-i18n="step2_title">Собеседование</h3>
-                <p data-i18n="step2_text">Познакомимся и расскажем о клубе</p>
-            </div>
-            <div class="step">
-                <div class="step-icon">🎉</div>
-                <h3 data-i18n="step3_title">Участвуй</h3>
-                <p data-i18n="step3_text">Присоединяйся к мероприятиям</p>
-            </div>
+            <div class="step"><div class="step-icon">📝</div><h3>Заполни анкету</h3><p>Оставь свои данные</p></div>
+            <div class="step"><div class="step-icon">💬</div><h3>Собеседование</h3><p>Познакомимся</p></div>
+            <div class="step"><div class="step-icon">🎉</div><h3>Участвуй</h3><p>Присоединяйся</p></div>
         </div>
     </div>
 
@@ -160,168 +157,58 @@
         <div class="card">
             <div class="leaders">
                 <div class="leader-block">
-                    <img src="image/leader.jpg" alt="Leader" class="leader-img">
-                    <h3 style="color: var(--primary-blue); font-size: 1.3rem;" data-i18n="leader_name">Лидер</h3>
-                    <p class="about-text" data-i18n="leader_desc">Координатор и руководитель волонтерского клуба.</p>
+                    <img src="image/leader.jpg" class="leader-img" alt="Leader">
+                    <h3 style="color:var(--primary-blue);">Лидер</h3>
+                    <p class="about-text">Координатор клуба</p>
                 </div>
                 <div class="leader-block">
-                    <img src="image/vice-leader.jpg" alt="Vice" class="leader-img">
-                    <h3 style="color: var(--primary-blue); font-size: 1.3rem;" data-i18n="vice_name">Вице-лидер</h3>
-                    <p class="about-text" data-i18n="vice_desc">Помощник лидера, отвечает за организацию мероприятий.</p>
+                    <img src="image/vice-leader.jpg" class="leader-img" alt="Vice">
+                    <h3 style="color:var(--primary-blue);">Вице-лидер</h3>
+                    <p class="about-text">Помощник лидера</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container reveal" id="events">
-        <h2 class="section-title" data-i18n="events_title">Наши мероприятия</h2>
+        <h2 class="section-title">Наши мероприятия</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="image/event1.jpg.PNG" alt="Event" class="lightbox-img"></div>
-            <div class="gallery-item"><img src="image/event4.jpg" alt="Event" class="lightbox-img"></div>
-        </div>
-    </div>
-
-    <div class="container reveal" id="timeline">
-        <h2 class="section-title" data-i18n="timeline_title">Путь клуба</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h4 data-i18n="tl1">2024 — Основание клуба</h4>
-                <p data-i18n="tl1_text">Старт волонтёрского движения в Ajou</p>
-            </div>
-            <div class="timeline-item">
-                <h4 data-i18n="tl2">2025 — Первые крупные мероприятия</h4>
-                <p data-i18n="tl2_text">Участие в форумах и социальных проектах</p>
-            </div>
-            <div class="timeline-item">
-                <h4 data-i18n="tl3">2026 — Рост и развитие</h4>
-                <p data-i18n="tl3_text">Расширение команды и новые инициативы</p>
-            </div>
+            <div class="gallery-item"><img src="image/event1.jpg.PNG" alt=""></div>
+            <div class="gallery-item"><img src="image/event4.jpg" alt=""></div>
         </div>
     </div>
 
     <div class="container reveal" id="contacts">
-        <h2 class="section-title" data-i18n="contacts_title">Контакты</h2>
+        <h2 class="section-title">Контакты</h2>
         <div class="card">
-            <p class="about-text" style="margin-bottom: 1rem;" data-i18n="contacts_text">Свяжитесь с нами</p>
             <div class="contacts">
-                <div class="contact-item">
-                    <strong>Telegram</strong><br>
-                    <a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Перейти в чат</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Instagram</strong><br>
-                    <a href="https://www.instagram.com/sov.ajou" target="_blank">@sov.ajou</a>
-                </div>
+                <div class="contact-item"><strong>Telegram</strong><br><a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Перейти в чат</a></div>
+                <div class="contact-item"><strong>Instagram</strong><br><a href="https://www.instagram.com/sov.ajou" target="_blank">@sov.ajou</a></div>
             </div>
         </div>
     </div>
 
     <div class="container reveal" id="apply">
-        <h2 class="section-title" data-i18n="apply_title">Стать частью команды</h2>
+        <h2 class="section-title">Стать частью команды</h2>
         <div class="card">
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="58b01bf8-596f-4493-8058-14cf697cd40a">
                 <input type="hidden" name="subject" value="Новая заявка в волонтеры Ajou">
-                <div class="form-group">
-                    <label for="name" data-i18n="form_name">ФИО полностью</label>
-                    <input type="text" id="name" name="name" required placeholder="Введите ваше ФИО">
-                </div>
-                <div class="form-group">
-                    <label for="group" data-i18n="form_group">Курс и направление</label>
-                    <input type="text" id="group" name="group" required placeholder="Например: B26C">
-                </div>
-                <div class="form-group">
-                    <label for="phone" data-i18n="form_phone">Телефон (Telegram)</label>
-                    <input type="text" id="phone" name="phone" required placeholder="+998...">
-                </div>
-                <div class="form-group">
-                    <label for="message" data-i18n="form_message">Почему хочешь стать волонтёром?</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Расскажи о себе..."></textarea>
-                </div>
-                <button type="submit" class="form-submit" data-i18n="form_btn">Отправить заявку</button>
+                <div class="form-group"><label>ФИО</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Группа</label><input type="text" name="group" required></div>
+                <div class="form-group"><label>Телефон</label><input type="text" name="phone" required></div>
+                <div class="form-group"><label>Сообщение</label><textarea name="message" rows="4"></textarea></div>
+                <button type="submit" class="form-submit">Отправить заявку</button>
             </form>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Ajou-Volunteers. <span data-i18n="footer">Все права защищены.</span></p>
-    </footer>
+    <footer><p>&copy; 2026 Ajou-Volunteers</p></footer>
 
     <button id="toTop">↑</button>
 
-    <div class="lightbox" id="lightbox">
-        <img id="lightbox-img" src="" alt="">
-    </div>
-
     <script>
-        // Тема
-        const themeBtn = document.getElementById('themeToggle');
-        themeBtn.onclick = () => {
-            const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-            document.body.dataset.theme = next;
-            themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('theme', next);
-        };
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.dataset.theme = savedTheme;
-        themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-        // Языки (сокращённо для примера — можешь расширить)
-        const translations = {
-            ru: { logo: "Ajou Volunteers", nav_about: "О нас", nav_how: "Как стать", nav_leader: "Лидер", nav_events: "Мероприятия", nav_contacts: "Контакты", nav_apply: "Анкета",
-                  hero_title: "School of Volunteers Club", hero_text: "Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!", hero_btn: "Стать волонтером",
-                  about_title: "О нашем клубе", about_text: "Мы — активное сообщество студентов университета Аджу...", how_title: "Как стать волонтёром",
-                  step1_title: "Заполни анкету", step1_text: "Оставь свои данные", step2_title: "Собеседование", step2_text: "Познакомимся", step3_title: "Участвуй", step3_text: "Присоединяйся",
-                  leader_title: "Руководство клуба", leader_name: "Лидер", leader_desc: "Координатор клуба.", vice_name: "Вице-лидер", vice_desc: "Помощник лидера.",
-                  events_title: "Наши мероприятия", timeline_title: "Путь клуба", tl1: "2024 — Основание", tl1_text: "Старт движения", tl2: "2025 — Рост", tl2_text: "Крупные проекты", tl3: "2026 — Развитие", tl3_text: "Новые инициативы",
-                  contacts_title: "Контакты", contacts_text: "Свяжитесь с нами", apply_title: "Стать частью команды", form_name: "ФИО", form_group: "Группа", form_phone: "Телефон", form_message: "Почему волонтёр?", form_btn: "Отправить", footer: "Все права защищены." },
-            uz: { logo: "Ajou Volunteers", nav_about: "Biz haqimizda", nav_how: "Qanday bo'lish", nav_leader: "Rahbar", nav_events: "Tadbirlar", nav_contacts: "Aloqa", nav_apply: "Ariza",
-                  hero_title: "School of Volunteers Club", hero_text: "Ajou universitetining volontyorlar harakatiga xush kelibsiz!", hero_btn: "Volontyor bo'lish",
-                  about_title: "Klubimiz haqida", about_text: "Biz Ajou talabalari jamoasimiz...", how_title: "Qanday qo'shilish",
-                  step1_title: "Ariza to'ldiring", step1_text: "Ma'lumotlaringizni qoldiring", step2_title: "Suhbat", step2_text: "Tanishamiz", step3_title: "Ishtirok eting", step3_text: "Qo'shiling",
-                  leader_title: "Rahbariyat", leader_name: "Rahbar", leader_desc: "Klub koordinatori.", vice_name: "O'rinbosar", vice_desc: "Yordamchi.",
-                  events_title: "Tadbirlar", timeline_title: "Klub yo'li", contacts_title: "Aloqa", contacts_text: "Bog'laning", apply_title: "Jamoaga qo'shilish", form_btn: "Yuborish", footer: "Huquqlar himoyalangan." },
-            en: { logo: "Ajou Volunteers", nav_about: "About", nav_how: "How to join", nav_leader: "Leader", nav_events: "Events", nav_contacts: "Contacts", nav_apply: "Apply",
-                  hero_title: "School of Volunteers Club", hero_text: "Welcome to the official volunteer movement of Ajou University!", hero_btn: "Become a Volunteer",
-                  about_title: "About Our Club", about_text: "We are an active community of Ajou students...", how_title: "How to Become a Volunteer",
-                  step1_title: "Fill the form", step1_text: "Leave your details", step2_title: "Interview", step2_text: "We'll get to know you", step3_title: "Participate", step3_text: "Join the events",
-                  leader_title: "Leadership", leader_name: "Leader", leader_desc: "Club coordinator.", vice_name: "Vice Leader", vice_desc: "Assistant.",
-                  events_title: "Our Events", timeline_title: "Club Journey", contacts_title: "Contacts", contacts_text: "Get in touch", apply_title: "Join the Team", form_btn: "Submit", footer: "All rights reserved." }
-        };
-
-        function setLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
-            });
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
-            localStorage.setItem('lang', lang);
-        }
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.onclick = () => setLanguage(btn.dataset.lang));
-        setLanguage(localStorage.getItem('lang') || 'ru');
-
-        // Scroll animation
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Кнопка наверх
-        const toTop = document.getElementById('toTop');
-        window.onscroll = () => { toTop.style.display = window.scrollY > 400 ? 'block' : 'none'; };
-        toTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Lightbox
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        document.querySelectorAll('.lightbox-img').forEach(img => {
-            img.onclick = () => {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('active');
-            };
-        });
-        lightbox.onclick = () => lightbox.classList.remove('active');
-    </script>
-</body>
-</html>              
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.onclick = () => navLinks.classList.toggle('active');
