@@ -1,0 +1,415 @@
+<!DOCTYPE html>  
+<html lang="ru">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>School of Volunteers Club — Volunteer by Ajou</title>  
+    <style>  
+        :root {  
+            --primary-blue: #1B365D;  
+            --accent-blue: #2B6CB0;  
+            --light-blue: #EBF8FF;  
+            --bg-color: #F8FAFC;  
+            --text-color: #2D3748;  
+            --white: #FFFFFF;  
+            --gray: #718096;  
+        }  
+  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+        }  
+  
+        body {  
+            background-color: var(--bg-color);  
+            color: var(--text-color);  
+            line-height: 1.6;  
+        }  
+  
+        /* Шапка */  
+        header {  
+            background: var(--white);  
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);  
+            position: fixed;  
+            width: 100%;  
+            top: 0;  
+            z-index: 1000;  
+        }  
+  
+        .nav-container {  
+            max-width: 1200px;  
+            margin: 0 auto;  
+            padding: 15px 20px;  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+        }  
+  
+        .logo-area {  
+            display: flex;  
+            align-items: center;  
+            gap: 12px;  
+            text-decoration: none;  
+        }  
+  
+        .logo-area img {  
+            width: 45px;  
+            height: 45px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+            border: 2px solid var(--primary-blue);  
+        }  
+  
+        .logo-text {  
+            font-weight: 700;  
+            font-size: 1.1rem;  
+            color: var(--primary-blue);  
+        }  
+  
+        nav ul {  
+            display: flex;  
+            list-style: none;  
+            gap: 25px;  
+        }  
+  
+        nav a {  
+            text-decoration: none;  
+            color: var(--text-color);  
+            font-weight: 500;  
+            transition: color 0.3s;  
+        }  
+  
+        nav a:hover {  
+            color: var(--accent-blue);  
+        }  
+  
+        /* Главный экран (Hero) */  
+        .hero {  
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));  
+            color: var(--white);  
+            padding: 160px 20px 100px;  
+            text-align: center;  
+        }  
+  
+        .hero h1 {  
+            font-size: 2.8rem;  
+            margin-bottom: 20px;  
+        }  
+  
+        .hero p {  
+            font-size: 1.2rem;  
+            max-width: 600px;  
+            margin: 0 auto 30px;  
+            opacity: 0.9;  
+        }  
+  
+        .btn {  
+            display: inline-block;  
+            background: var(--white);  
+            color: var(--primary-blue);  
+            padding: 12px 30px;  
+            border-radius: 30px;  
+            font-weight: 600;  
+            text-decoration: none;  
+            transition: transform 0.2s, background 0.2s;  
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);  
+        }  
+  
+        .btn:hover {  
+            transform: translateY(-2px);  
+            background: var(--light-blue);  
+        }  
+  
+        /* Основной контейнер */  
+        .container {  
+            max-width: 1100px;  
+            margin: 0 auto;  
+            padding: 80px 20px;  
+        }  
+  
+        section h2 {  
+            text-align: center;  
+            font-size: 2.2rem;  
+            color: var(--primary-blue);  
+            margin-bottom: 50px;  
+            position: relative;  
+        }  
+  
+        section h2::after {  
+            content: '';  
+            display: block;  
+            width: 60px;  
+            height: 3px;  
+            background: var(--accent-blue);  
+            margin: 10px auto 0;  
+            border-radius: 2px;  
+        }  
+  
+        /* О нас */  
+        .about-content {  
+            background: var(--white);  
+            padding: 40px;  
+            border-radius: 16px;  
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);  
+            text-align: center;  
+            font-size: 1.1rem;  
+            color: var(--gray);  
+        }  
+  
+        /* Блок лидера */  
+        .leader-card {  
+            background: var(--white);  
+            border-radius: 16px;  
+            padding: 40px;  
+            max-width: 450px;  
+            margin: 0 auto;  
+            text-align: center;  
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);  
+            border-top: 5px solid var(--accent-blue);  
+        }  
+  
+        .leader-avatar {  
+            width: 150px;  
+            height: 150px;  
+            border-radius: 50%;  
+            object-fit: cover;  
+            margin: 0 auto 20px;  
+            border: 4px solid var(--light-blue);  
+        }  
+  
+        .leader-card h3 {  
+            color: var(--primary-blue);  
+            font-size: 1.5rem;  
+            margin-bottom: 5px;  
+        }  
+  
+        .leader-card .role {  
+            color: var(--accent-blue);  
+            font-weight: 600;  
+            margin-bottom: 15px;  
+            font-size: 0.95rem;  
+        }  
+  
+        .leader-card p {  
+            color: var(--gray);  
+            font-size: 0.95rem;  
+        }  
+  
+        /* Галерея мероприятий */  
+        .gallery-grid {  
+            display: grid;  
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
+            gap: 25px;  
+        }  
+  
+        .gallery-item {  
+            background: var(--white);  
+            border-radius: 12px;  
+            overflow: hidden;  
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);  
+            transition: transform 0.3s;  
+        }  
+  
+        .gallery-item:hover {  
+            transform: translateY(-5px);  
+        }  
+  
+        .gallery-item img {  
+            width: 100%;  
+            height: 220px;  
+            object-fit: cover;  
+        }  
+  
+        .gallery-info {  
+            padding: 20px;  
+        }  
+  
+        .gallery-info h4 {  
+            color: var(--primary-blue);  
+            margin-bottom: 8px;  
+        }  
+  
+        .gallery-info p {  
+            color: var(--gray);  
+            font-size: 0.9rem;  
+        }  
+  
+        /* Анкета */  
+        .form-container {  
+            background: var(--white);  
+            max-width: 600px;  
+            margin: 0 auto;  
+            padding: 40px;  
+            border-radius: 16px;  
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);  
+        }  
+  
+        .form-group {  
+            margin-bottom: 20px;  
+        }  
+  
+        .form-group label {  
+            display: block;  
+            margin-bottom: 8px;  
+            font-weight: 600;  
+            color: var(--primary-blue);  
+        }  
+  
+        .form-group input, .form-group textarea {  
+            width: 100%;  
+            padding: 12px 15px;  
+            border: 1px solid #CBD5E0;  
+            border-radius: 8px;  
+            font-size: 1rem;  
+            outline: none;  
+            transition: border-color 0.3s;  
+        }  
+  
+        .form-group input:focus, .form-group textarea:focus {  
+            border-color: var(--accent-blue);  
+        }  
+  
+        .form-container button {  
+            width: 100%;  
+            background: var(--primary-blue);  
+            color: var(--white);  
+            border: none;  
+            padding: 14px;  
+            border-radius: 8px;  
+            font-size: 1rem;  
+            font-weight: 600;  
+            cursor: pointer;  
+            transition: background 0.3s;  
+        }  
+  
+        .form-container button:hover {  
+            background: var(--accent-blue);  
+        }  
+  
+        /* Футер */  
+        footer {  
+            background: var(--primary-blue);  
+            color: var(--white);  
+            text-align: center;  
+            padding: 30px 20px;  
+            margin-top: 60px;  
+            font-size: 0.9rem;  
+            opacity: 0.9;  
+        }  
+  
+        @media(max-width: 768px) {  
+            nav ul { display: none; }  
+            .hero h1 { font-size: 2.2rem; }  
+        }  
+    </style>  
+</head>  
+<body>  
+  
+    <!-- Шапка -->  
+    <header>  
+        <div class="nav-container">  
+            <a href="#" class="logo-area">  
+                <!-- Официальный логотип клуба -->  
+                <img src="https://i.ibb.co/3s6q3h2/image-619000.jpg" alt="Logo">  
+                <span class="logo-text">Ajou Volunteers</span>  
+            </a>  
+            <nav>  
+                <ul>  
+                    <li><a href="#about">О нас</a></li>  
+                    <li><a href="#leader">Лидер</a></li>  
+                    <li><a href="#gallery">Мероприятия</a></li>  
+                    <li><a href="#apply">Анкета</a></li>  
+                </ul>  
+            </nav>  
+        </div>  
+    </header>  
+  
+    <!-- Главный экран -->  
+    <section class="hero">  
+        <h1>School of Volunteers Club</h1>  
+        <p>Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!</p>  
+        <a href="#apply" class="btn">Стать волонтером</a>  
+    </section>  
+  
+    <!-- О нас -->  
+    <section id="about" class="container">  
+        <h2>О нашем клубе</h2>  
+        <div class="about-content">  
+            <p>Мы — активное сообщество студентов университета Аджу, объединенных общей целью помогать другим, организовывать масштабные университетские и социальные мероприятия, развивать лидерские качества и находить верных друзей. Присоединяйся к нашей команде и реализуй свой потенциал!</p>  
+        </div>  
+    </section>  
+  
+    <!-- Лидер клуба -->  
+    <section id="leader" class="container">  
+        <h2>Лидер движения</h2>  
+        <div class="leader-card">  
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Лидер волонтеров" class="leader-avatar">  
+            <h3>Имя Фамилия</h3>  
+            <div class="role">Руководитель Ajou Volunteers</div>  
+            <p>«Волонтерство — это не просто помощь окружающим, это путь к самосовершенствованию и созданию лучшего будущего. Ждем каждого из вас в нашей дружной команде!»</p>  
+        </div>  
+    </section>  
+  
+    <!-- Галерея -->  
+    <section id="gallery" class="container">  
+        <h2>Галерея мероприятий</h2>  
+        <div class="gallery-grid">  
+            <div class="gallery-item">  
+                <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600&auto=format&fit=crop&q=80" alt="Мероприятие 1">  
+                <div class="gallery-info">  
+                    <h4>Благотворительная акция</h4>  
+                    <p>Помощь нуждающимся и распространение добра в Ташкенте.</p>  
+                </div>  
+            </div>  
+            <div class="gallery-item">  
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop&q=80" alt="Мероприятие 2">  
+                <div class="gallery-info">  
+                    <h4>Университетский форум</h4>  
+                    <p>Организация масштабного события в стенах Ajou.</p>  
+                </div>  
+            </div>  
+            <div class="gallery-item">  
+                <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&auto=format&fit=crop&q=80" alt="Мероприятие 3">  
+                <div class="gallery-info">  
+                    <h4>Эко-субботник</h4>  
+                    <p>Забота об окружающей среде и чистый город.</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+  
+    <!-- Анкета -->  
+    <section id="apply" class="container">  
+        <h2>Анкета волонтера</h2>  
+        <div class="form-container">  
+            <form id="volunteerForm" onsubmit="event.preventDefault(); alert('Спасибо! Ваша анкета успешно отправлена.');">  
+                <div class="form-group">  
+                    <label for="fullname">ФИО полностью</label>  
+                    <input type="text" id="fullname" placeholder="Введите ваше имя" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="group">Курс и направление (группа)</label>  
+                    <input type="text" id="group" placeholder="Например: SWE-22" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="phone">Номер телефона (Telegram)</label>  
+                    <input type="text" id="phone" placeholder="+998 -- --- -- --" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="why">Почему вы хотите стать волонтером?</label>  
+                    <textarea id="why" rows="4" placeholder="Расскажите немного о себе..."></textarea>  
+                </div>  
+                <button type="submit">Отправить заявку</button>  
+            </form>  
+        </div>  
+    </section>  
+  
+    <!-- Футер -->  
+    <footer>  
+        <p>&copy; 2026 School of Volunteers Club – Volunteer by Ajou. Все права защищены.</p>  
+    </footer>  
+  
+</body>  
+</html>  
