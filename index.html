@@ -3,277 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajou Volunteers — Официальный портал</title>
+    <title>School of Volunteers Club – Ajou</title>
     <style>
         :root {
-            --bg: #050505;
-            --surface: #111113;
-            --surface-hover: #1c1c21;
-            --text: #ffffff;
-            --gray: #888890;
-            --border: rgba(255, 255, 255, 0.1);
-            --accent: #d5001c; /* Знаменитый красный цвет в стиле Porsche */
+            --primary-blue: #1B365D;
+            --accent-blue: #3B82F6;
+            --bg-color: #F8FAFC;
+            --text-color: #1E293B;
+            --card-bg: #FFFFFF;
+            --header-bg: #FFFFFF;
+            --gray: #64748B;
+            --light-blue: #E0F2FE;
+            --border: #E2E8F0;
         }
-        [data-theme="light"] {
-            --bg: #f4f4f6;
-            --surface: #ffffff;
-            --surface-hover: #eaeaea;
-            --text: #111113;
-            --gray: #666670;
-            --border: rgba(0, 0, 0, 0.1);
-            --accent: #d5001c;
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #F1F5F9;
+            --card-bg: #1C1C1E;
+            --header-bg: #1C1C1E;
+            --gray: #A1A1AA;
+            --light-blue: #1E3A5F;
+            --border: #2C2C2E;
+            --primary-blue: #60A5FA;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
         
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-            box-sizing: border-box;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; transition: background 0.4s ease, color 0.4s ease, border 0.4s ease; }
+        header { background-color: var(--header-bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; color: var(--primary-blue); }
+        .logo-area img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
         
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+        .nav-links { display: flex; gap: 18px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
         
-        /* Шапка в стиле Porsche (минимализм, строгость) */
-        header { 
-            padding: 24px 48px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            backdrop-filter: blur(10px);
-        }
-        .logo { font-weight: 900; font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text); text-decoration: none; }
-        .logo span { color: var(--accent); }
+        .controls { display: flex; align-items: center; gap: 8px; }
+        .lang-btn, .theme-btn { background: var(--light-blue); border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--primary-blue); }
+        .lang-btn.active { background: var(--accent-blue); color: white; }
         
-        .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
-
-        /* Главный экран презентации (Hero) */
-        .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 60px 48px;
-            position: relative;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%), url('image/event1.jpg.PNG') center/cover no-repeat;
-        }
-        .hero-content { max-width: 800px; z-index: 2; }
-        .hero-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 12px; display: block; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; text-transform: uppercase; }
-        .hero-desc { color: #d1d1d6; font-size: 1.15rem; margin-bottom: 32px; max-width: 600px; }
-
-        /* Кнопки конфигуратора */
-        .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn {
-            padding: 16px 36px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, background 0.2s;
-        }
-        .btn-porsche {
-            background: var(--text);
-            color: var(--bg);
-        }
-        .btn-porsche:hover {
-            background: var(--accent);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid var(--border);
-        }
-        .btn-outline:hover {
-            border-color: var(--text);
-            transform: translateY(-2px);
-        }
-
-        /* Секция выбора моделей/разделов (как выбор комплектации авто) */
-        .models-section {
-            padding: 100px 48px;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        .section-title { font-size: 2rem; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 40px; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-color); }
         
-        .models-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .model-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .model-card:hover {
-            background: var(--surface-hover);
-            border-color: var(--accent);
-            transform: translateY(-6px);
-        }
-        .model-img {
-            width: 100%;
-            height: 260px;
-            overflow: hidden;
-        }
-        .model-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .model-card:hover img { transform: scale(1.05); }
-
-        .model-info { padding: 32px; display: flex; flex-direction: column; flex-grow: 1; }
-        .model-category { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
-        .model-info h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
-        .model-info p { color: var(--gray); font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1; }
-        .model-link { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text); display: inline-flex; align-items: center; gap: 8px; }
-        .model-card:hover .model-link { color: var(--accent); }
-
-        .theme-btn { 
-            background: none; 
-            border: 1px solid var(--border); 
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            cursor: pointer; 
-            color: var(--text); 
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; 
-        }
-        .theme-btn:hover { border-color: var(--accent); }
-
-        footer {
-            padding: 40px 48px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: auto;
-        }
-
+        .hero { background: linear-gradient(135deg, #1B365D, #2563EB); color: white; text-align: center; padding: 5.5rem 20px; }
+        .hero h1 { font-size: 2.6rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
+        .btn { display: inline-block; background: white; color: #1B365D; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 700; }
+        
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 1.9rem; margin-bottom: 1.5rem; color: var(--primary-blue); }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 2rem; border: 1px solid var(--border); margin-bottom: 1.5rem; text-align: center; }
+        
+        .leaders { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+        .leader-block { flex: 1; min-width: 220px; max-width: 280px; }
+        .leader-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--light-blue); display: block; }
+        .about-text { font-size: 1rem; color: var(--gray); }
+        
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 1.2rem; }
+        .step { background: var(--light-blue); padding: 1.3rem; border-radius: 16px; text-align: center; }
+        .step-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 1.2rem; }
+        .gallery-item { border-radius: 14px; overflow: hidden; height: 180px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .contacts { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 1rem; }
+        .contact-item { background: var(--light-blue); padding: 1.1rem 1.4rem; border-radius: 14px; min-width: 200px; }
+        .contact-item a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        
+        .form-group { margin-bottom: 1.2rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: var(--primary-blue); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; background: var(--card-bg); color: var(--text-color); }
+        .form-submit { background: var(--accent-blue); color: white; border: none; padding: 13px; border-radius: 30px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; }
+        
+        footer { text-align: center; padding: 1.5rem; color: var(--gray); font-size: 0.85rem; border-top: 1px solid var(--border); }
+        
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.5s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent-blue); color: white; width: 46px; height: 46px; border-radius: 50%; border: none; font-size: 1.4rem; cursor: pointer; display: none; z-index: 99; }
+        
+        /* Mobile menu */
         @media (max-width: 768px) {
-            header { padding: 20px; }
-            .hero { padding: 40px 20px; height: 75vh; }
-            .models-section { padding: 60px 20px; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                right: 0; 
+                background: var(--header-bg); 
+                flex-direction: column; 
+                padding: 20px; 
+                gap: 16px; 
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .logo-area span { font-size: 1rem; }
+            .hero h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
+
     <header>
-        <a href="index.html" class="logo">AJOU <span>VOLUNTEERS</span></a>
-        <div class="nav-links">
-            <a href="moments.html">Галерея</a>
-            <button class="theme-btn" id="themeBtn" title="Сменить тему">☀️</button>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="image/logo.jpg" alt="Logo">
+                <span data-i18n="logo">Ajou Volunteers</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-i18n="nav_about">О нас</a></li>
+                <li><a href="#how" data-i18n="nav_how">Как стать</a></li>
+                <li><a href="#leader" data-i18n="nav_leader">Лидер</a></li>
+                <li><a href="#events" data-i18n="nav_events">Мероприятия</a></li>
+                <li><a href="moments.html">Моменты</a></li>
+                <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
+                <li><a href="#apply" data-i18n="nav_apply">Анкета</a></li>
+            </ul>
+            <div class="controls">
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="uz">UZ</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="theme-btn" id="themeToggle">🌙</button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
         </div>
     </header>
 
-    <!-- Главный баннер презентации -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-tag">Новое поколение комьюнити</span>
-            <h1>Двигайся с нами к цели</h1>
-            <p class="hero-desc">Энергия, страсть и масштабные проекты волонтерского движения Ajou University. Создаем будущее своими руками.</p>
-            <div class="btn-group">
-                <a href="moments.html" class="btn btn-porsche">Смотреть моменты</a>
-                <a href="#models" class="btn btn-outline">Узнать больше</a>
+        <h1 data-i18n="hero_title">School of Volunteers Club</h1>
+        <p data-i18n="hero_text">Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!</p>
+        <a href="#apply" class="btn" data-i18n="hero_btn">Стать волонтером</a>
+    </section>
+
+    <div class="container reveal" id="about">
+        <h2 class="section-title" data-i18n="about_title">О нашем клубе</h2>
+        <div class="card">
+            <p class="about-text" data-i18n="about_text">Мы — активное сообщество студентов университета Аджу, объединенных общей целью помогать другим и делать добрые дела.</p>
+        </div>
+    </div>
+
+    <div class="container reveal" id="how">
+        <h2 class="section-title">Как стать волонтёром</h2>
+        <div class="steps">
+            <div class="step"><div class="step-icon">📝</div><h3>Заполни анкету</h3><p>Оставь свои данные</p></div>
+            <div class="step"><div class="step-icon">💬</div><h3>Собеседование</h3><p>Познакомимся</p></div>
+            <div class="step"><div class="step-icon">🎉</div><h3>Участвуй</h3><p>Присоединяйся</p></div>
+        </div>
+    </div>
+
+    <div class="container reveal" id="leader">
+        <h2 class="section-title" data-i18n="leader_title">Руководство клуба</h2>
+        <div class="card">
+            <div class="leaders">
+                <div class="leader-block">
+                    <img src="image/leader.jpg" class="leader-img" alt="Leader">
+                    <h3 style="color:var(--primary-blue);">Лидер</h3>
+                    <p class="about-text">Координатор клуба</p>
+                </div>
+                <div class="leader-block">
+                    <img src="image/vice-leader.jpg" class="leader-img" alt="Vice">
+                    <h3 style="color:var(--primary-blue);">Вице-лидер</h3>
+                    <p class="about-text">Помощник лидера</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Секция выбора направлений (в стиле конфигуратора авто) -->
-    <section class="models-section" id="models">
-        <h2 class="section-title">Направления клуба</h2>
-        
-        <div class="models-grid">
-            <a href="moments.html" class="model-card">
-                <div class="model-img">
-                    <img src="image/event1.jpg.PNG" alt="Форумы">
-                </div>
-                <div class="model-info">
-                    <span class="model-category">Масштаб</span>
-                    <h3>Форумы и Саммиты</h3>
-                    <p>Представляем университет на международной арене и организуем ключевые события.</p>
-                    <span class="model-link">Исследовать галерею →</span>
-                </div>
-            </a>
-
-            <a href="moments.html" class="model-card">
-                <div class="model-img">
-                    <img src="image/event4.jpg" alt="Выставки">
-                </div>
-                <div class="model-info">
-                    <span class="model-category">Презентации</span>
-                    <h3>Выставки и Инициативы</h3>
-                    <p>Знакомим будущих студентов с культурой волонтерства и нашими проектами.</p>
-                    <span class="model-link">Исследовать галерею →</span>
-                </div>
-            </a>
-
-            <a href="moments.html" class="model-card">
-                <div class="model-img">
-                    <img src="image/5462909628845857503_119.jpg" alt="Команда">
-                </div>
-                <div class="model-info">
-                    <span class="model-category">Сообщество</span>
-                    <h3>Команда и Встречи</h3>
-                    <p>Люди, которые разделяют ценности добра, взаимовыручки и постоянного развития.</p>
-                    <span class="model-link">Исследовать галерею →</span>
-                </div>
-            </a>
+    <div class="container reveal" id="events">
+        <h2 class="section-title">Наши мероприятия</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="image/event1.jpg.PNG" alt=""></div>
+            <div class="gallery-item"><img src="image/event4.jpg" alt=""></div>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p>© 2026 Ajou Volunteers. Спроектировано для побед.</p>
-    </footer>
+    <div class="container reveal" id="contacts">
+        <h2 class="section-title">Контакты</h2>
+        <div class="card">
+            <div class="contacts">
+                <div class="contact-item"><strong>Telegram</strong><br><a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Перейти в чат</a></div>
+                <div class="contact-item"><strong>Instagram</strong><br><a href="https://www.instagram.com/sov.ajou" target="_blank">@sov.ajou</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container reveal" id="apply">
+        <h2 class="section-title">Стать частью команды</h2>
+        <div class="card">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="58b01bf8-596f-4493-8058-14cf697cd40a">
+                <input type="hidden" name="subject" value="Новая заявка в волонтеры Ajou">
+                <div class="form-group"><label>ФИО</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Группа</label><input type="text" name="group" required></div>
+                <div class="form-group"><label>Телефон</label><input type="text" name="phone" required></div>
+                <div class="form-group"><label>Сообщение</label><textarea name="message" rows="4"></textarea></div>
+                <button type="submit" class="form-submit">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Ajou-Volunteers</p></footer>
+
+    <button id="toTop">↑</button>
 
     <script>
-        const btn = document.getElementById('themeBtn');
-        const updateThemeUI = (theme) => {
-            document.body.dataset.theme = theme;
-            btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-        };
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.onclick = () => navLinks.classList.toggle('active');
+        navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('active'));
 
-        btn.onclick = () => {
+        // Тема
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.onclick = () => {
             const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-            updateThemeUI(next);
+            document.body.dataset.theme = next;
+            themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
             localStorage.setItem('theme', next);
         };
+        const saved = localStorage.getItem('theme') || 'light';
+        document.body.dataset.theme = saved;
+        themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
 
-        const saved = localStorage.getItem('theme') || 'dark';
-        updateThemeUI(saved);
+        // Кнопка наверх
+        const toTop = document.getElementById('toTop');
+        window.onscroll = () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        toTop.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+        // Анимация
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
