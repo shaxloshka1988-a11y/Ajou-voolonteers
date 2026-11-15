@@ -6,45 +6,88 @@
     <title>Моменты | Ajou Volunteers</title>
     <style>
         :root {
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #202124;
-            --gray: #5f6368;
-            --border: #dadce0;
-            --accent: #1a73e8;
-            --shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        [data-theme="dark"] {
-            --bg: #17181a;
-            --card-bg: #202124;
-            --text: #e8eaed;
+            --bg: #0f1015;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-hover: rgba(255, 255, 255, 0.08);
+            --text: #f1f3f4;
             --gray: #9aa0a6;
-            --border: #3c4043;
-            --accent: #8ab4f8;
-            --shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.4);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        [data-theme="light"] {
+            --bg: #f4f5f7;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-hover: rgba(255, 255, 255, 1);
+            --text: #1f2937;
+            --gray: #4b5563;
+            --border: rgba(0, 0, 0, 0.08);
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.2);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         }
         
-        /* Исправление масштаба и защита от горизонтального скролла */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
             box-sizing: border-box;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s; }
         
-        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(at 10% 20%, var(--accent-glow) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
         
-        header { padding: 16px 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); position: sticky; top: 0; z-index: 100; }
+        header { 
+            padding: 18px 32px; 
+            border-bottom: 1px solid var(--border); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: var(--card-bg); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
         .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
         
         .container { max-width: 1200px; margin: 40px auto; padding: 0 24px; width: 100%; }
-        h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 8px; }
-        .subtitle { color: var(--gray); margin-bottom: 30px; }
+        
+        /* Блок заголовка и мини-статистики */
+        .top-section {
+            margin-bottom: 40px;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .subtitle { color: var(--gray); margin-bottom: 24px; font-size: 1.1rem; }
 
-        /* Сетка галереи */
+        .stats-badge {
+            display: inline-flex;
+            gap: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .stats-badge span { color: var(--accent); }
+
+        /* Сетка галереи с эффектом матового стекла (Glassmorphism) */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
             width: 100%;
         }
@@ -52,21 +95,24 @@
         .moment {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
         .moment:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            background: var(--card-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: var(--accent);
         }
         
         .image-container {
             width: 100%;
-            height: 220px;
+            height: 230px;
             overflow: hidden;
             position: relative;
         }
@@ -74,56 +120,65 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s;
         }
         .moment:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .moment-content {
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         .date { 
-            font-size: 0.8rem; 
-            font-weight: 600; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
             color: var(--accent); 
             text-transform: uppercase; 
-            margin-bottom: 6px; 
-            letter-spacing: 0.5px; 
+            margin-bottom: 8px; 
+            letter-spacing: 1px; 
         }
-        .moment h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+        .moment h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; }
         .moment p { color: var(--gray); font-size: 0.95rem; }
 
         .theme-btn { 
-            background: none; 
+            background: var(--card-bg); 
             border: 1px solid var(--border); 
-            padding: 8px 12px; 
-            border-radius: 8px; 
+            padding: 8px 14px; 
+            border-radius: 10px; 
             cursor: pointer; 
             color: var(--text); 
-            font-size: 1rem; 
+            font-size: 1.1rem; 
+            backdrop-filter: blur(8px);
         }
+        .theme-btn:hover { border-color: var(--accent); }
 
-        /* Адаптивность для мобильных телефонов */
         @media (max-width: 600px) {
             .container { padding: 0 16px; margin: 20px auto; }
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 2rem; }
+            .stats-badge { flex-direction: column; gap: 6px; border-radius: 16px; width: 100%; text-align: center; }
             .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body data-theme="light">
+<body data-theme="dark">
     <header>
         <a href="index.html" class="logo">← Ajou Volunteers</a>
-        <button class="theme-btn" id="themeBtn">🌙</button>
+        <button class="theme-btn" id="themeBtn">☀️</button>
     </header>
 
     <div class="container">
-        <h1>Моменты клуба</h1>
-        <p class="subtitle">Яркие кадры с мероприятий, форумов и внутренней жизни нашего клуба</p>
+        <div class="top-section">
+            <h1>Моменты клуба ✨</h1>
+            <p class="subtitle">Энергия, эмоции и яркие события из жизни нашей команды</p>
+            
+            <div class="stats-badge">
+                <div><span>11+</span> Мероприятий</div>
+                <div><span>2026</span> Год актива</div>
+                <div><span>100%</span> Драйва</div>
+            </div>
+        </div>
 
         <div class="gallery-grid">
             <div class="moment">
@@ -240,7 +295,7 @@
             localStorage.setItem('theme', next);
         };
 
-        const saved = localStorage.getItem('theme') || 'light';
+        const saved = localStorage.getItem('theme') || 'dark';
         updateThemeUI(saved);
     </script>
 </body>
