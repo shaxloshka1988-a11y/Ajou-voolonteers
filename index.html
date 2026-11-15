@@ -212,3 +212,30 @@
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         menuToggle.onclick = () => navLinks.classList.toggle('active');
+        navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('active'));
+
+        // Тема
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.onclick = () => {
+            const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+            document.body.dataset.theme = next;
+            themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', next);
+        };
+        const saved = localStorage.getItem('theme') || 'light';
+        document.body.dataset.theme = saved;
+        themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
+
+        // Кнопка наверх
+        const toTop = document.getElementById('toTop');
+        window.onscroll = () => toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        toTop.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+        // Анимация
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
