@@ -23,21 +23,30 @@
             --accent: #8ab4f8;
             --shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+        
+        /* Исправление масштаба и защита от горизонтального скролла */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+        
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
         
         header { padding: 16px 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); position: sticky; top: 0; z-index: 100; }
         .logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); text-decoration: none; }
         
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 24px; width: 100%; }
         h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 8px; }
         .subtitle { color: var(--gray); margin-bottom: 30px; }
 
         /* Сетка галереи */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
+            width: 100%;
         }
 
         .moment {
@@ -97,6 +106,13 @@
             color: var(--text); 
             font-size: 1rem; 
         }
+
+        /* Адаптивность для мобильных телефонов */
+        @media (max-width: 600px) {
+            .container { padding: 0 16px; margin: 20px auto; }
+            h1 { font-size: 1.8rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -110,7 +126,6 @@
         <p class="subtitle">Яркие кадры с мероприятий, форумов и внутренней жизни нашего клуба</p>
 
         <div class="gallery-grid">
-            <!-- Карточка 1 -->
             <div class="moment">
                 <div class="image-container"><img src="image/event1.jpg.PNG" alt="Форум"></div>
                 <div class="moment-content">
@@ -120,7 +135,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 2 -->
             <div class="moment">
                 <div class="image-container"><img src="image/event4.jpg" alt="Выставка"></div>
                 <div class="moment-content">
@@ -130,7 +144,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 3 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857503_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -140,7 +153,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 4 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857504_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -150,7 +162,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 5 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857505_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -160,7 +171,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 6 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857506_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -170,7 +180,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 7 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857507_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -180,7 +189,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 8 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857508_121.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -190,7 +198,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 9 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857509_121.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -200,7 +207,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 10 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857510_119.jpg" alt="Момент"></div>
                 <div class="moment-content">
@@ -210,7 +216,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 11 -->
             <div class="moment">
                 <div class="image-container"><img src="image/5462909628845857511_121.jpg" alt="Момент"></div>
                 <div class="moment-content">
