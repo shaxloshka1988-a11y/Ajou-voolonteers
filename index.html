@@ -26,7 +26,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        /* Анимации появления */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -86,7 +85,6 @@
             color: var(--white);
             text-align: center;
             padding: 6rem 20px;
-            position: relative;
         }
         .hero h1 {
             font-size: 2.8rem;
@@ -111,7 +109,6 @@
         }
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
             background-color: var(--light-blue);
         }
         .container {
@@ -124,7 +121,6 @@
             font-size: 2.2rem;
             margin-bottom: 2.5rem;
             color: var(--primary-blue);
-            position: relative;
         }
         .card {
             background: var(--white);
@@ -146,10 +142,6 @@
             margin: 0 auto 1.5rem;
             border: 4px solid var(--light-blue);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .leader-img:hover {
-            transform: scale(1.05);
         }
         .about-text {
             font-size: 1.15rem;
@@ -157,7 +149,6 @@
             max-width: 700px;
             margin: 0 auto;
         }
-        /* Галерея мероприятий */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -184,7 +175,6 @@
         .gallery-item:hover img {
             transform: scale(1.08);
         }
-        /* Форма */
         .form-group {
             margin-bottom: 1.5rem;
             text-align: left;
@@ -202,11 +192,6 @@
             border-radius: 10px;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
         }
         .form-submit {
             background-color: var(--primary-blue);
@@ -218,11 +203,10 @@
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background-color 0.3s;
         }
         .form-submit:hover {
             background-color: var(--accent-blue);
-            transform: translateY(-2px);
         }
         footer {
             text-align: center;
@@ -240,7 +224,7 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="https://i.ibb.co/689531x/image-0c3e56.jpg" alt="Logo">
+                <img src="https://images.weserv.nl/?url=i.imgur.com/8Qe8e8P.jpg&w=100" alt="Logo" onerror="this.src='https://raw.githubusercontent.com/shaxloshka1988-a11y/Ajou-voolonteers/main/logo.jpg'">
                 <span>Ajou Volunteers</span>
             </div>
             <ul class="nav-links">
@@ -268,7 +252,7 @@
     <div class="container fade-in" id="leader">
         <h2 class="section-title">Руководство клуба</h2>
         <div class="card">
-            <img src="https://i.ibb.co/9H03125/image-6bbe81.jpg" alt="Лидер клуба" class="leader-img">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Лидер клуба" class="leader-img">
             <h3 style="color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 0.5rem;">Лидер движения</h3>
             <p class="about-text">Координатор и руководитель волонтерского клуба университета Аджу. Вдохновляет команду на реализацию крупных проектов и развитие молодежных инициатив.</p>
         </div>
@@ -277,21 +261,10 @@
     <div class="container fade-in" id="events">
         <h2 class="section-title">Наши мероприятия и жизнь клуба</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/Kj86mH7/image-a2d7eb.jpg" alt="Event 1">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/3s65q52/image-a3c7a9.jpg" alt="Event 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/8L4482V/image-aa5d3f.jpg" alt="Event 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/9963529/image-4c3fd8.jpg" alt="Event 4">
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/2507817/image-cf83b2.jpg" alt="Event 5">
-            </div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600" alt="Event"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600" alt="Event"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600" alt="Event"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600" alt="Event"></div>
         </div>
     </div>
 
@@ -299,9 +272,7 @@
         <h2 class="section-title">Стать частью команды</h2>
         <div class="card">
             <form action="https://api.web3forms.com/submit" method="POST">
-                <!-- Замени YOUR_ACCESS_KEY_HERE на свой ключ от Web3Forms при желании -->
                 <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                
                 <div class="form-group">
                     <label for="name">ФИО полностью</label>
                     <input type="text" id="name" name="name" required placeholder="Введите ваше ФИО">
