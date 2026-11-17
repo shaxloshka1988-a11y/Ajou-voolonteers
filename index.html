@@ -6,255 +6,231 @@
     <title>School of Volunteers Club – Ajou</title>
     <style>
         :root {
-            --primary: #1e40af;
-            --accent: #3b82f6;
-            --bg: #f8fafc;
-            --text: #0f172a;
-            --card: #ffffff;
-            --header: rgba(255,255,255,0.9);
-            --gray: #64748b;
-            --border: #e2e8f0;
+            --navy: #0a2540;
+            --blue: #1a56db;
+            --light: #f7f9fc;
+            --text: #1f2937;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+            --white: #ffffff;
         }
         [data-theme="dark"] {
-            --primary: #60a5fa;
-            --accent: #3b82f6;
-            --bg: #020617;
-            --text: #f1f5f9;
-            --card: #0f172a;
-            --header: rgba(15,23,42,0.9);
-            --gray: #94a3b8;
-            --border: #1e293b;
+            --navy: #e5e7eb;
+            --blue: #60a5fa;
+            --light: #111827;
+            --text: #f3f4f6;
+            --gray: #9ca3af;
+            --border: #374151;
+            --white: #1f2937;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background: var(--light); color: var(--text); }
         
-        header { background: var(--header); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary); }
-        .logo-area img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: var(--navy); text-decoration: none; }
+        .logo img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; }
         
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
+        .menu { display: flex; gap: 28px; list-style: none; }
+        .menu a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; }
+        .menu a:hover { color: var(--blue); }
         
         .controls { display: flex; gap: 8px; align-items: center; }
-        .lang-btn, .theme-btn { background: transparent; border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: var(--primary); transition: all 0.2s; }
-        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
+        .lang, .theme { background: none; border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+        .lang.active { background: var(--blue); color: white; border-color: var(--blue); }
+        .burger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
         
-        .hero { 
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); 
-            color: white; text-align: center; padding: 6.5rem 20px; 
-            position: relative;
-        }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px; }
-        .hero p { font-size: 1.15rem; max-width: 580px; margin: 0 auto 2rem; opacity: 0.95; }
-        .btn { 
-            display: inline-block; background: white; color: #1e40af; 
-            padding: 14px 32px; border-radius: 50px; text-decoration: none; 
-            font-weight: 700; transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .hero { background: var(--navy); color: white; padding: 80px 24px; text-align: center; }
+        .hero h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 28px; opacity: 0.9; line-height: 1.7; }
+        .cta { display: inline-block; background: var(--blue); color: white; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        .cta:hover { background: #1e40af; }
         
-        .container { max-width: 1000px; margin: 4rem auto; padding: 0 20px; }
-        .section-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--primary); }
-        .card { 
-            background: var(--card); border-radius: 20px; padding: 2.2rem; 
-            border: 1px solid var(--border); margin-bottom: 1.8rem; text-align: center;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-4px); }
+        .wrap { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
+        .title { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; color: var(--navy); text-align: center; }
+        .box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px; }
         
-        .leaders { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .leader-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--accent); display: block; transition: transform 0.3s; }
-        .leader-img:hover { transform: scale(1.04); }
-        .about-text { color: var(--gray); }
+        .leaders { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .person { text-align: center; max-width: 240px; }
+        .person img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid var(--border); }
+        .person h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--navy); }
+        .person p { font-size: 0.9rem; color: var(--gray); }
         
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-        .step { background: var(--card); padding: 1.6rem; border-radius: 16px; text-align: center; border: 1px solid var(--border); transition: transform 0.3s; }
-        .step:hover { transform: translateY(-4px); }
-        .step-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .step { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+        .step-num { width: 40px; height: 40px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 700; }
         
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-        .gallery-item { border-radius: 16px; overflow: hidden; height: 200px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
         
-        .contacts { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .contact-item { background: var(--card); padding: 1.3rem 1.6rem; border-radius: 16px; min-width: 200px; border: 1px solid var(--border); transition: transform 0.3s; }
-        .contact-item:hover { transform: translateY(-3px); }
-        .contact-item a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        .contacts { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .contact { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 200px; }
+        .contact a { color: var(--blue); text-decoration: none; font-weight: 600; }
         
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: var(--primary); }
-        .form-group input, .form-group textarea { width: 100%; padding: 13px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; background: var(--card); color: var(--text); }
-        .form-submit { background: var(--accent); color: white; border: none; padding: 14px; border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; transition: background 0.2s; }
-        .form-submit:hover { background: #2563eb; }
+        .form label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+        .form input, .form textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; font-size: 1rem; background: var(--white); color: var(--text); }
+        .form button { background: var(--blue); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; }
         
-        footer { text-align: center; padding: 2rem; color: var(--gray); font-size: 0.9rem; }
+        footer { text-align: center; padding: 24px; color: var(--gray); font-size: 0.85rem; border-top: 1px solid var(--border); }
         
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transform: translateY(16px); transition: all 0.5s ease; }
+        .reveal.show { opacity: 1; transform: none; }
         
-        #toTop { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; width: 46px; height: 46px; border-radius: 50%; border: none; font-size: 1.3rem; cursor: pointer; display: none; z-index: 99; box-shadow: 0 4px 15px rgba(59,130,246,0.4); }
+        #top { position: fixed; bottom: 20px; right: 20px; background: var(--blue); color: white; width: 44px; height: 44px; border-radius: 8px; border: none; font-size: 1.2rem; cursor: pointer; display: none; }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--header); flex-direction: column; padding: 16px; gap: 12px; border-bottom: 1px solid var(--border); }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero { padding: 5rem 20px; }
+            .menu { display: none; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 16px 24px; gap: 12px; border-bottom: 1px solid var(--border); }
+            .menu.open { display: flex; }
+            .burger { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 60px 20px; }
         }
     </style>
 </head>
 <body data-theme="light">
 
     <header>
-        <div class="nav-container">
-            <div class="logo-area">
+        <div class="nav">
+            <a href="#" class="logo">
                 <img src="image/logo.jpg" alt="Logo">
                 <span data-i18n="logo">Ajou Volunteers</span>
-            </div>
-            <ul class="nav-links" id="navLinks">
+            </a>
+            <ul class="menu" id="menu">
                 <li><a href="#about" data-i18n="nav_about">О нас</a></li>
                 <li><a href="#how" data-i18n="nav_how">Как стать</a></li>
-                <li><a href="#leader" data-i18n="nav_leader">Лидер</a></li>
+                <li><a href="#leader" data-i18n="nav_leader">Руководство</a></li>
                 <li><a href="#events" data-i18n="nav_events">Мероприятия</a></li>
                 <li><a href="moments.html">Моменты</a></li>
                 <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
-                <li><a href="#apply" data-i18n="nav_apply">Анкета</a></li>
+                <li><a href="#apply" data-i18n="nav_apply">Заявка</a></li>
             </ul>
             <div class="controls">
-                <button class="lang-btn" data-lang="ru">RU</button>
-                <button class="lang-btn" data-lang="uz">UZ</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="theme-btn" id="themeToggle">🌙</button>
-                <button class="menu-toggle" id="menuToggle">☰</button>
+                <button class="lang" data-lang="ru">RU</button>
+                <button class="lang" data-lang="uz">UZ</button>
+                <button class="lang" data-lang="en">EN</button>
+                <button class="theme" id="theme">🌙</button>
+                <button class="burger" id="burger">☰</button>
             </div>
         </div>
     </header>
 
     <section class="hero">
         <h1 data-i18n="hero_title">School of Volunteers Club</h1>
-        <p data-i18n="hero_text">Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!</p>
-        <a href="#apply" class="btn" data-i18n="hero_btn">Стать волонтером</a>
+        <p data-i18n="hero_text">Официальное волонтёрское движение университета Аджу. Присоединяйся к команде, которая меняет мир к лучшему.</p>
+        <a href="#apply" class="cta" data-i18n="hero_btn">Подать заявку</a>
     </section>
 
-    <div class="container reveal" id="about">
-        <h2 class="section-title" data-i18n="about_title">О нашем клубе</h2>
-        <div class="card">
-            <p class="about-text" data-i18n="about_text">Мы — активное сообщество студентов университета Аджу, объединённых желанием помогать другим и делать добрые дела.</p>
+    <div class="wrap reveal" id="about">
+        <h2 class="title" data-i18n="about_title">О клубе</h2>
+        <div class="box">
+            <p style="text-align:center; max-width:700px; margin:0 auto; color:var(--gray); line-height:1.8;" data-i18n="about_text">School of Volunteers Club — это сообщество активных студентов Ajou University, объединённых желанием помогать обществу, развивать лидерские навыки и участвовать в значимых социальных и образовательных проектах.</p>
         </div>
     </div>
 
-    <div class="container reveal" id="how">
-        <h2 class="section-title" data-i18n="how_title">Как стать волонтёром</h2>
+    <div class="wrap reveal" id="how">
+        <h2 class="title" data-i18n="how_title">Как присоединиться</h2>
         <div class="steps">
-            <div class="step"><div class="step-icon">📝</div><h3 data-i18n="step1">Заполни анкету</h3><p data-i18n="step1t">Оставь свои данные</p></div>
-            <div class="step"><div class="step-icon">💬</div><h3 data-i18n="step2">Собеседование</h3><p data-i18n="step2t">Познакомимся</p></div>
-            <div class="step"><div class="step-icon">🎉</div><h3 data-i18n="step3">Участвуй</h3><p data-i18n="step3t">Присоединяйся</p></div>
+            <div class="step"><div class="step-num">1</div><h3 data-i18n="step1">Заполни заявку</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="step1t">Оставь свои контактные данные</p></div>
+            <div class="step"><div class="step-num">2</div><h3 data-i18n="step2">Собеседование</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="step2t">Познакомимся с командой</p></div>
+            <div class="step"><div class="step-num">3</div><h3 data-i18n="step3">Стань частью клуба</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="step3t">Участвуй в мероприятиях</p></div>
         </div>
     </div>
 
-    <div class="container reveal" id="leader">
-        <h2 class="section-title" data-i18n="leader_title">Руководство клуба</h2>
-        <div class="card">
+    <div class="wrap reveal" id="leader">
+        <h2 class="title" data-i18n="leader_title">Руководство</h2>
+        <div class="box">
             <div class="leaders">
-                <div>
-                    <img src="image/leader.jpg" class="leader-img">
+                <div class="person">
+                    <img src="image/leader.jpg" alt="Leader">
                     <h3 data-i18n="leader_name">Лидер</h3>
-                    <p class="about-text" data-i18n="leader_desc">Координатор клуба</p>
+                    <p data-i18n="leader_desc">Координатор клуба</p>
                 </div>
-                <div>
-                    <img src="image/vice-leader.jpg" class="leader-img">
+                <div class="person">
+                    <img src="image/vice-leader.jpg" alt="Vice">
                     <h3 data-i18n="vice_name">Вице-лидер</h3>
-                    <p class="about-text" data-i18n="vice_desc">Помощник лидера</p>
+                    <p data-i18n="vice_desc">Организация мероприятий</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container reveal" id="events">
-        <h2 class="section-title" data-i18n="events_title">Наши мероприятия</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="image/event1.jpg.PNG"></div>
-            <div class="gallery-item"><img src="image/event4.jpg"></div>
+    <div class="wrap reveal" id="events">
+        <h2 class="title" data-i18n="events_title">Мероприятия</h2>
+        <div class="gallery">
+            <img src="image/event1.jpg.PNG" alt="Event">
+            <img src="image/event4.jpg" alt="Event">
         </div>
     </div>
 
-    <div class="container reveal" id="contacts">
-        <h2 class="section-title" data-i18n="contacts_title">Контакты</h2>
-        <div class="card">
-            <div class="contacts">
-                <div class="contact-item"><strong>Telegram</strong><br><a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Перейти в чат</a></div>
-                <div class="contact-item"><strong>Instagram</strong><br><a href="https://www.instagram.com/sov.ajou" target="_blank">@sov.ajou</a></div>
-            </div>
+    <div class="wrap reveal" id="contacts">
+        <h2 class="title" data-i18n="contacts_title">Контакты</h2>
+        <div class="contacts">
+            <div class="contact"><strong>Telegram</strong><br><a href="https://t.me/+KuIKnCNCAaIyNDcy" target="_blank">Присоединиться</a></div>
+            <div class="contact"><strong>Instagram</strong><br><a href="https://www.instagram.com/sov.ajou" target="_blank">@sov.ajou</a></div>
         </div>
     </div>
 
-    <div class="container reveal" id="apply">
-        <h2 class="section-title" data-i18n="apply_title">Стать частью команды</h2>
-        <div class="card">
-            <form action="https://api.web3forms.com/submit" method="POST">
+    <div class="wrap reveal" id="apply">
+        <h2 class="title" data-i18n="apply_title">Заявка на вступление</h2>
+        <div class="box">
+            <form class="form" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="58b01bf8-596f-4493-8058-14cf697cd40a">
-                <input type="hidden" name="subject" value="Новая заявка в волонтеры Ajou">
-                <div class="form-group"><label data-i18n="form_name">ФИО</label><input type="text" name="name" required></div>
-                <div class="form-group"><label data-i18n="form_group">Группа</label><input type="text" name="group" required></div>
-                <div class="form-group"><label data-i18n="form_phone">Телефон</label><input type="text" name="phone" required></div>
-                <div class="form-group"><label data-i18n="form_msg">Сообщение</label><textarea name="message" rows="4"></textarea></div>
-                <button type="submit" class="form-submit" data-i18n="form_btn">Отправить заявку</button>
+                <input type="hidden" name="subject" value="Заявка в Ajou Volunteers">
+                <label data-i18n="form_name">ФИО</label>
+                <input type="text" name="name" required>
+                <label data-i18n="form_group">Группа</label>
+                <input type="text" name="group" required>
+                <label data-i18n="form_phone">Телефон / Telegram</label>
+                <input type="text" name="phone" required>
+                <label data-i18n="form_msg">Почему хотите присоединиться?</label>
+                <textarea name="message" rows="4"></textarea>
+                <button type="submit" data-i18n="form_btn">Отправить заявку</button>
             </form>
         </div>
     </div>
 
-    <footer><p>&copy; 2026 Ajou-Volunteers</p></footer>
-    <button id="toTop">↑</button>
+    <footer><p>&copy; 2026 Ajou University · School of Volunteers Club</p></footer>
+    <button id="top">↑</button>
 
     <script>
-        const translations = {
-            ru: { logo:"Ajou Volunteers", nav_about:"О нас", nav_how:"Как стать", nav_leader:"Лидер", nav_events:"Мероприятия", nav_contacts:"Контакты", nav_apply:"Анкета", hero_title:"School of Volunteers Club", hero_text:"Добро пожаловать в официальное волонтерское движение университета Аджу. Твори добро и меняй мир вместе с нами!", hero_btn:"Стать волонтером", about_title:"О нашем клубе", about_text:"Мы — активное сообщество студентов университета Аджу, объединённых желанием помогать другим и делать добрые дела.", how_title:"Как стать волонтёром", step1:"Заполни анкету", step1t:"Оставь свои данные", step2:"Собеседование", step2t:"Познакомимся", step3:"Участвуй", step3t:"Присоединяйся", leader_title:"Руководство клуба", leader_name:"Лидер", leader_desc:"Координатор клуба", vice_name:"Вице-лидер", vice_desc:"Помощник лидера", events_title:"Наши мероприятия", contacts_title:"Контакты", apply_title:"Стать частью команды", form_name:"ФИО", form_group:"Группа", form_phone:"Телефон", form_msg:"Сообщение", form_btn:"Отправить заявку" },
-            uz: { logo:"Ajou Volunteers", nav_about:"Biz haqimizda", nav_how:"Qanday bo'lish", nav_leader:"Rahbar", nav_events:"Tadbirlar", nav_contacts:"Aloqa", nav_apply:"Ariza", hero_title:"School of Volunteers Club", hero_text:"Ajou universitetining rasmiy volontyorlar harakatiga xush kelibsiz!", hero_btn:"Volontyor bo'lish", about_title:"Klubimiz haqida", about_text:"Biz Ajou universiteti talabalari jamoasimiz.", how_title:"Qanday qo'shilish", step1:"Ariza", step1t:"Ma'lumot qoldiring", step2:"Suhbat", step2t:"Tanishamiz", step3:"Ishtirok", step3t:"Qo'shiling", leader_title:"Rahbariyat", leader_name:"Rahbar", leader_desc:"Koordinator", vice_name:"O'rinbosar", vice_desc:"Yordamchi", events_title:"Tadbirlar", contacts_title:"Aloqa", apply_title:"Jamoaga qo'shilish", form_name:"Ism", form_group:"Guruh", form_phone:"Telefon", form_msg:"Xabar", form_btn:"Yuborish" },
-            en: { logo:"Ajou Volunteers", nav_about:"About", nav_how:"How to join", nav_leader:"Leader", nav_events:"Events", nav_contacts:"Contacts", nav_apply:"Apply", hero_title:"School of Volunteers Club", hero_text:"Welcome to the official volunteer movement of Ajou University!", hero_btn:"Become a Volunteer", about_title:"About Our Club", about_text:"We are an active community of Ajou University students.", how_title:"How to Join", step1:"Fill the form", step1t:"Leave your details", step2:"Interview", step2t:"We'll meet", step3:"Participate", step3t:"Join us", leader_title:"Leadership", leader_name:"Leader", leader_desc:"Club coordinator", vice_name:"Vice Leader", vice_desc:"Assistant", events_title:"Our Events", contacts_title:"Contacts", apply_title:"Join the Team", form_name:"Name", form_group:"Group", form_phone:"Phone", form_msg:"Message", form_btn:"Submit" }
+        const t = {
+            ru: { logo:"Ajou Volunteers", nav_about:"О нас", nav_how:"Как стать", nav_leader:"Руководство", nav_events:"Мероприятия", nav_contacts:"Контакты", nav_apply:"Заявка", hero_title:"School of Volunteers Club", hero_text:"Официальное волонтёрское движение университета Аджу. Присоединяйся к команде, которая меняет мир к лучшему.", hero_btn:"Подать заявку", about_title:"О клубе", about_text:"School of Volunteers Club — это сообщество активных студентов Ajou University, объединённых желанием помогать обществу и развивать лидерские навыки.", how_title:"Как присоединиться", step1:"Заполни заявку", step1t:"Оставь свои контактные данные", step2:"Собеседование", step2t:"Познакомимся с командой", step3:"Стань частью клуба", step3t:"Участвуй в мероприятиях", leader_title:"Руководство", leader_name:"Лидер", leader_desc:"Координатор клуба", vice_name:"Вице-лидер", vice_desc:"Организация мероприятий", events_title:"Мероприятия", contacts_title:"Контакты", apply_title:"Заявка на вступление", form_name:"ФИО", form_group:"Группа", form_phone:"Телефон / Telegram", form_msg:"Почему хотите присоединиться?", form_btn:"Отправить заявку" },
+            uz: { logo:"Ajou Volunteers", nav_about:"Biz haqimizda", nav_how:"Qanday qo'shilish", nav_leader:"Rahbariyat", nav_events:"Tadbirlar", nav_contacts:"Aloqa", nav_apply:"Ariza", hero_title:"School of Volunteers Club", hero_text:"Ajou universitetining rasmiy volontyorlar harakati.", hero_btn:"Ariza topshirish", about_title:"Klub haqida", about_text:"School of Volunteers Club — Ajou University talabalari jamoasi.", how_title:"Qanday qo'shilish", step1:"Ariza to'ldiring", step1t:"Kontakt ma'lumotlaringizni qoldiring", step2:"Suhbat", step2t:"Jamoa bilan tanishamiz", step3:"Klub a'zosi bo'ling", step3t:"Tadbirlarda ishtirok eting", leader_title:"Rahbariyat", leader_name:"Rahbar", leader_desc:"Klub koordinatori", vice_name:"O'rinbosar", vice_desc:"Tadbirlarni tashkil qilish", events_title:"Tadbirlar", contacts_title:"Aloqa", apply_title:"A'zo bo'lish arizasi", form_name:"Ism", form_group:"Guruh", form_phone:"Telefon / Telegram", form_msg:"Nima uchun qo'shilmoqchisiz?", form_btn:"Arizani yuborish" },
+            en: { logo:"Ajou Volunteers", nav_about:"About", nav_how:"How to Join", nav_leader:"Leadership", nav_events:"Events", nav_contacts:"Contacts", nav_apply:"Apply", hero_title:"School of Volunteers Club", hero_text:"The official volunteer movement of Ajou University. Join a team that makes a difference.", hero_btn:"Apply Now", about_title:"About the Club", about_text:"School of Volunteers Club is a community of active Ajou University students united by the desire to help society and develop leadership skills.", how_title:"How to Join", step1:"Fill the form", step1t:"Leave your contact details", step2:"Interview", step2t:"Meet the team", step3:"Become a member", step3t:"Participate in events", leader_title:"Leadership", leader_name:"Leader", leader_desc:"Club Coordinator", vice_name:"Vice Leader", vice_desc:"Event Organization", events_title:"Events", contacts_title:"Contacts", apply_title:"Membership Application", form_name:"Full Name", form_group:"Group", form_phone:"Phone / Telegram", form_msg:"Why do you want to join?", form_btn:"Submit Application" }
         };
 
-        function setLanguage(lang) {
+        function setLang(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang]?.[key]) el.textContent = translations[lang][key];
+                const k = el.dataset.i18n;
+                if (t[lang]?.[k]) el.textContent = t[lang][k];
             });
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.lang-btn[data-lang="${lang}"]`)?.classList.add('active');
+            document.querySelectorAll('.lang').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang[data-lang="${lang}"]`)?.classList.add('active');
             localStorage.setItem('lang', lang);
         }
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.onclick = () => setLanguage(btn.dataset.lang));
-        setLanguage(localStorage.getItem('lang') || 'ru');
+        document.querySelectorAll('.lang').forEach(b => b.onclick = () => setLang(b.dataset.lang));
+        setLang(localStorage.getItem('lang') || 'ru');
 
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        menuToggle.onclick = () => navLinks.classList.toggle('active');
-        navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('active'));
+        document.getElementById('burger').onclick = () => document.getElementById('menu').classList.toggle('open');
+        document.querySelectorAll('#menu a').forEach(a => a.onclick = () => document.getElementById('menu').classList.remove('open'));
 
-        const themeBtn = document.getElementById('themeToggle');
+        const themeBtn = document.getElementById('theme');
         themeBtn.onclick = () => {
             const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
             document.body.dataset.theme = next;
             themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
             localStorage.setItem('theme', next);
         };
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.dataset.theme = savedTheme;
-        themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        const saved = localStorage.getItem('theme') || 'light';
+        document.body.dataset.theme = saved;
+        themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
 
-        const toTop = document.getElementById('toTop');
-        window.onscroll = () => toTop.style.display = window.scrollY > 350 ? 'block' : 'none';
-        toTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+        const topBtn = document.getElementById('top');
+        window.onscroll = () => topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+        topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
