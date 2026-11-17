@@ -28,13 +28,13 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
         body { background: var(--light); color: var(--text); }
         
-        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
         .nav { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.15rem; color: var(--navy); text-decoration: none; }
-        .logo img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
+        .logo img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
         
         .menu { display: flex; gap: 26px; list-style: none; }
-        .menu a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .menu a { text-decoration: none; color: var(--text); font-weight: 500; }
         .menu a:hover { color: var(--blue); }
         
         .controls { display: flex; gap: 8px; align-items: center; }
@@ -42,21 +42,12 @@
         .lang.active { background: var(--blue); color: white; }
         .burger { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--text); }
         
-        .hero { 
-            background: linear-gradient(135deg, #0a1f44 0%, #1e3a8a 60%, #3b82f6 100%); 
-            color: white; padding: 100px 24px 80px; text-align: center; position: relative; overflow: hidden;
-        }
-        .hero::after {
-            content: '';
-            position: absolute; bottom: -50px; left: -10%; right: -10%;
-            height: 100px; background: var(--light);
-            border-radius: 50% 50% 0 0;
-        }
+        .hero { background: linear-gradient(135deg, #0a1f44 0%, #1e3a8a 60%, #3b82f6 100%); color: white; padding: 100px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; bottom: -50px; left: -10%; right: -10%; height: 100px; background: var(--light); border-radius: 50% 50% 0 0; }
         .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; position: relative; z-index: 1; }
-        .hero .subtitle { font-size: 1rem; letter-spacing: 3px; opacity: 0.8; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 1; }
+        .hero .subtitle { font-size: 0.95rem; letter-spacing: 3px; opacity: 0.8; margin-bottom: 20px; text-transform: uppercase; position: relative; z-index: 1; }
         .hero p { font-size: 1.15rem; max-width: 620px; margin: 0 auto 32px; opacity: 0.95; line-height: 1.7; position: relative; z-index: 1; }
-        .cta { display: inline-block; background: white; color: #0a1f44; padding: 14px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; position: relative; z-index: 1; transition: transform 0.2s; }
-        .cta:hover { transform: translateY(-2px); }
+        .cta { display: inline-block; background: white; color: #0a1f44; padding: 14px 36px; border-radius: 50px; text-decoration: none; font-weight: 700; position: relative; z-index: 1; }
         
         .stats { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-top: 50px; position: relative; z-index: 1; }
         .stat b { display: block; font-size: 2.2rem; font-weight: 800; }
@@ -64,25 +55,30 @@
         
         .wrap { max-width: 1100px; margin: 70px auto; padding: 0 24px; }
         .title { font-size: 1.9rem; font-weight: 700; margin-bottom: 28px; color: var(--navy); text-align: center; }
-        .box { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .box { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
         
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-        .feature { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 20px; text-align: center; transition: transform 0.3s; }
-        .feature:hover { transform: translateY(-4px); }
-        .feature-icon { font-size: 2.2rem; margin-bottom: 10px; }
-        
-        .leaders { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .person { text-align: center; max-width: 220px; }
-        .person img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 14px; border: 4px solid #e0e7ff; }
-        .person h3 { font-size: 1.1rem; color: var(--navy); }
-        .person p { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
-        
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-        .step { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; }
-        .step-num { width: 40px; height: 40px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 700; }
-        
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .why-card { 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 32px 24px; 
+            text-align: center; 
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .why-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+        .why-icon { 
+            width: 70px; height: 70px; 
+            background: linear-gradient(135deg, #1a56db, #3b82f6); 
+            border-radius: 20px; 
+            display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 18px; 
+            font-size: 2rem;
+            color: white;
+        }
+        .why-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--navy); }
+        .why-card p { color: var(--gray); font-size: 0.95rem; line-height: 1.6; }
         
         .faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
         .faq-item h4 { cursor: pointer; font-weight: 600; }
@@ -119,9 +115,6 @@
             <ul class="menu" id="menu">
                 <li><a href="#about" data-i18n="nav_about">О нас</a></li>
                 <li><a href="#why" data-i18n="nav_why">Почему мы</a></li>
-                <li><a href="#how" data-i18n="nav_how">Как стать</a></li>
-                <li><a href="#leader" data-i18n="nav_leader">Команда</a></li>
-                <li><a href="#events" data-i18n="nav_events">Мероприятия</a></li>
                 <li><a href="moments.html">Моменты</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
@@ -158,39 +151,23 @@
 
     <div class="wrap reveal" id="why">
         <h2 class="title" data-i18n="why_title">Почему стоит присоединиться</h2>
-        <div class="features">
-            <div class="feature"><div class="feature-icon">🤝</div><h3 data-i18n="why1">Volunteer</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="why1t">Помогай и развивайся</p></div>
-            <div class="feature"><div class="feature-icon">👥</div><h3 data-i18n="why2">Connect</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="why2t">Новые друзья и связи</p></div>
-            <div class="feature"><div class="feature-icon">🌍</div><h3 data-i18n="why3">Create Impact</h3><p style="color:var(--gray); font-size:0.9rem; margin-top:6px;" data-i18n="why3t">Реальное влияние</p></div>
-        </div>
-    </div>
-
-    <div class="wrap reveal" id="how">
-        <h2 class="title" data-i18n="how_title">Как присоединиться</h2>
-        <div class="steps">
-            <div class="step"><div class="step-num">1</div><h3 data-i18n="step1">Заявка</h3><p style="color:var(--gray); font-size:0.85rem; margin-top:6px;" data-i18n="step1t">Заполни форму</p></div>
-            <div class="step"><div class="step-num">2</div><h3 data-i18n="step2">Знакомство</h3><p style="color:var(--gray); font-size:0.85rem; margin-top:6px;" data-i18n="step2t">Встреча с командой</p></div>
-            <div class="step"><div class="step-num">3</div><h3 data-i18n="step3">Участие</h3><p style="color:var(--gray); font-size:0.85rem; margin-top:6px;" data-i18n="step3t">Стань частью клуба</p></div>
-        </div>
-    </div>
-
-    <div class="wrap reveal" id="leader">
-        <h2 class="title" data-i18n="leader_title">Команда</h2>
-        <div class="box">
-            <div class="leaders">
-                <div class="person"><img src="image/leader.jpg"><h3 data-i18n="leader_name">Лидер</h3><p data-i18n="leader_desc">Координатор</p></div>
-                <div class="person"><img src="image/vice-leader.jpg"><h3 data-i18n="vice_name">Вице-лидер</h3><p data-i18n="vice_desc">Организация</p></div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">🤝</div>
+                <h3 data-i18n="why1">Volunteer</h3>
+                <p data-i18n="why1t">Помогай другим, получай опыт и развивай важные навыки</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">👥</div>
+                <h3 data-i18n="why2">Connect</h3>
+                <p data-i18n="why2t">Находи новых друзей и полезные связи внутри университета</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🌍</div>
+                <h3 data-i18n="why3">Create Impact</h3>
+                <p data-i18n="why3t">Вноси реальный вклад в жизнь общества и университета</p>
             </div>
         </div>
-    </div>
-
-    <div class="wrap reveal" id="events">
-        <h2 class="title" data-i18n="events_title">Мероприятия</h2>
-        <div class="gallery">
-            <img src="image/event1.jpg.PNG" alt="">
-            <img src="image/event4.jpg" alt="">
-        </div>
-        <p style="text-align:center; margin-top:24px;"><a href="moments.html" style="color:var(--blue); font-weight:600;">Смотреть все моменты →</a></p>
     </div>
 
     <div class="wrap reveal" id="faq">
@@ -230,45 +207,4 @@
 
     <script>
         const t = {
-            ru: { logo:"Ajou Volunteers", nav_about:"О нас", nav_why:"Почему мы", nav_how:"Как стать", nav_leader:"Команда", nav_events:"Мероприятия", nav_contacts:"Контакты", nav_apply:"Заявка", hero_title:"School of Volunteers Club", hero_text:"Together we make a difference. Официальное волонтёрское движение университета Аджу.", hero_btn:"Подать заявку", stat1:"волонтёров", stat2:"мероприятий", stat3:"часов помощи", about_title:"О клубе", about_text:"School of Volunteers Club — сообщество активных студентов Ajou University. Мы организуем социальные и образовательные мероприятия, развиваем лидерские навыки и вносим реальный вклад в жизнь университета и общества.", why_title:"Почему стоит присоединиться", why1:"Volunteer", why1t:"Помогай и развивайся", why2:"Connect", why2t:"Новые друзья и связи", why3:"Create Impact", why3t:"Реальное влияние", how_title:"Как присоединиться", step1:"Заявка", step1t:"Заполни форму", step2:"Знакомство", step2t:"Встреча с командой", step3:"Участие", step3t:"Стань частью клуба", leader_title:"Команда", leader_name:"Лидер", leader_desc:"Координатор", vice_name:"Вице-лидер", vice_desc:"Организация", events_title:"Мероприятия", contacts_title:"Контакты", apply_title:"Заявка", form_name:"ФИО", form_group:"Группа", form_phone:"Телефон / Telegram", form_msg:"Почему хотите присоединиться?", form_btn:"Отправить заявку", faq1:"Нужен ли опыт?", faq1a:"Нет, мы принимаем всех желающих.", faq2:"Сколько времени занимает?", faq2a:"Можно участвовать в 1–2 мероприятиях в месяц.", faq3:"Есть ли сертификаты?", faq3a:"Да, активные участники получают сертификаты." },
-            uz: { logo:"Ajou Volunteers", nav_about:"Biz haqimizda", nav_why:"Nima uchun", nav_how:"Qanday qo'shilish", nav_leader:"Jamoa", nav_events:"Tadbirlar", nav_contacts:"Aloqa", nav_apply:"Ariza", hero_title:"School of Volunteers Club", hero_text:"Together we make a difference.", hero_btn:"Ariza topshirish", stat1:"volontyor", stat2:"tadbir", stat3:"soat", about_title:"Klub haqida", about_text:"School of Volunteers Club — Ajou University talabalari jamoasi.", why_title:"Nima uchun qo'shilish", why1:"Volunteer", why1t:"Yordam va rivojlanish", why2:"Connect", why2t:"Yangi do'stlar", why3:"Impact", why3t:"Haqiqiy ta'sir", how_title:"Qanday qo'shilish", step1:"Ariza", step1t:"Formani to'ldiring", step2:"Tanishuv", step2t:"Jamoa bilan", step3:"Ishtirok", step3t:"A'zo bo'ling", leader_title:"Jamoa", leader_name:"Rahbar", leader_desc:"Koordinator", vice_name:"O'rinbosar", vice_desc:"Tashkilot", events_title:"Tadbirlar", contacts_title:"Aloqa", apply_title:"Ariza", form_name:"Ism", form_group:"Guruh", form_phone:"Telefon", form_msg:"Nima uchun?", form_btn:"Yuborish", faq1:"Tajriba kerakmi?", faq1a:"Yo'q.", faq2:"Qancha vaqt?", faq2a:"Oyiga 1-2 tadbir.", faq3:"Sertifikat?", faq3a:"Ha." },
-            en: { logo:"Ajou Volunteers", nav_about:"About", nav_why:"Why Us", nav_how:"How to Join", nav_leader:"Team", nav_events:"Events", nav_contacts:"Contacts", nav_apply:"Apply", hero_title:"School of Volunteers Club", hero_text:"Together we make a difference. The official volunteer movement of Ajou University.", hero_btn:"Apply Now", stat1:"volunteers", stat2:"events", stat3:"hours", about_title:"About the Club", about_text:"School of Volunteers Club is a community of active Ajou University students.", why_title:"Why Join Us", why1:"Volunteer", why1t:"Help and grow", why2:"Connect", why2t:"New friends", why3:"Create Impact", why3t:"Real impact", how_title:"How to Join", step1:"Apply", step1t:"Fill the form", step2:"Meet", step2t:"Meet the team", step3:"Participate", step3t:"Become a member", leader_title:"Team", leader_name:"Leader", leader_desc:"Coordinator", vice_name:"Vice Leader", vice_desc:"Organization", events_title:"Events", contacts_title:"Contacts", apply_title:"Application", form_name:"Full Name", form_group:"Group", form_phone:"Phone", form_msg:"Why join?", form_btn:"Submit", faq1:"Do I need experience?", faq1a:"No, everyone is welcome.", faq2:"How much time?", faq2a:"1–2 events per month.", faq3:"Certificates?", faq3a:"Yes, for active members." }
-        };
-
-        function setLang(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const k = el.dataset.i18n;
-                if (t[lang]?.[k]) el.textContent = t[lang][k];
-            });
-            document.querySelectorAll('.lang').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.lang[data-lang="${lang}"]`)?.classList.add('active');
-            localStorage.setItem('lang', lang);
-        }
-        document.querySelectorAll('.lang').forEach(b => b.onclick = () => setLang(b.dataset.lang));
-        setLang(localStorage.getItem('lang') || 'ru');
-
-        document.getElementById('burger').onclick = () => document.getElementById('menu').classList.toggle('open');
-        document.querySelectorAll('#menu a').forEach(a => a.onclick = () => document.getElementById('menu').classList.remove('open'));
-
-        const themeBtn = document.getElementById('theme');
-        themeBtn.onclick = () => {
-            const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-            document.body.dataset.theme = next;
-            themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('theme', next);
-        };
-        const saved = localStorage.getItem('theme') || 'light';
-        document.body.dataset.theme = saved;
-        themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
-
-        document.querySelectorAll('.faq-item h4').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
-
-        const topBtn = document.getElementById('top');
-        window.onscroll = () => topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
-        topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    </script>
-</body>
-</html>
+            ru: { logo:"Ajou Volunteers", nav_about:"О нас", nav_why:"Почему мы", nav_contacts:"Контакты", nav_apply:"Заявка", hero_title:"School of Volunteers Club", hero_text:"Together we make a difference. Официальное волонтёрское движение университета Аджу.", hero_btn:"Подать заявку", stat1:"волонтёров", stat2:"мероприятий", stat3:"часов помощи", about_title:"О клубе", about_text:"School of Volunteers Club — сообщество активных студентов Ajou University. Мы организуем социальные и образовательные мероприятия, развиваем лидерские навыки и вносим реальный вклад в жизнь университета и общества.", why_title:"Почему стоит присоединиться", why1:"Volunteer", why1t:"Помогай другим, получай опыт и развивай важные навыки", why2:"Connect",
